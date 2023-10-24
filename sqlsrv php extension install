@@ -1,0 +1,43 @@
+
+PHP extension  sqlsrv isntall by source compile method on ubuntu linux ---> 
+
+---> download the package into .tgz file into server if wget not work, download into your local window machine and then copy into the ec2-server by using scp command on cmd terminnal.
+
+website url:--->   https://pecl.php.net/package/sqlsrv   goto available releases- and click on  on latest package which is .tgz file...  download it.
+
+copy this package to the server using scp ''command'' ,  if you using mobaexterm it can upload easily to the directory..
+
+# tar -xzf sqlsrv-5.11.1.tgz ---- to extract the tfz file into direcoty
+
+# sudo apt-get install php-dev unixodbc-dev  ------- isntall the dependency pacakges
+
+
+# cd   cd sqlsrv-5.11.1
+
+
+# ls -l -----  check multiple files present here. 
+
+# phpize     ---->    execute this command as it is
+
+# ./configure      ------>      execute it
+
+
+#  make  
+
+
+# make install 
+
+
+Installing shared extensions:     /usr/lib/php/20220829/ -----> it means it is installed directly... 
+
+
+----Now we have to    add into the .ini file .
+ 
+#    echo "extension=sqlsrv.so" | sudo tee /etc/php/8.2/cli/conf.d/20-sqlsrv.ini   ---> for   php  cli backend
+
+#  echo "extension=sqlsrv.so" | sudo tee /etc/php/8.2/apache2/conf.d/20-sqlsrv.ini  ----->  for php apache2   frontend. 
+
+
+you can verify it is installed by typing command 
+
+# php -m | grep sqlsrv
